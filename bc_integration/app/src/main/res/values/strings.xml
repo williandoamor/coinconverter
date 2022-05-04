@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">bc_integration</string>
+
+    <!-- Dialogs Extension -->
+    <string name="btn_OK">Ok</string>
+
+    <!--String activity main-->
+    <string name="my_conversion">CONVERTER MOEDA</string>
+    <string name="value_to_converter">Valor a converter</string>
+    <string name="last_conversions">Últimas Conversões Realizadas.</string>
+    <string name="from_converter">Converter de</string>
+    <string name="to_converter">Converter Para</string>
+    <string name="btn_converter_text">Converter</string>
+
 </resources>
