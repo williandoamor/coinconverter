@@ -73,7 +73,7 @@ enum class Coin(val country: String, val cod: Int, val locale: Locale) {
     /*Reunio Unidado*/
     //GBP(Locale("en","GB")),
     /*Brasil*/
-    BRL("Brazil/BRL",790, Locale("pt-br", "BR"));
+    BRL("Real/BRL",790, Locale("pt-br", "BR"));
 
 
     companion object {

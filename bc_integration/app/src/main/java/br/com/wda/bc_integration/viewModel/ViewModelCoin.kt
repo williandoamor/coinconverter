@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.wda.bc_integration.data.Cotacao
 import br.com.wda.bc_integration.repository.CoinRepository
 import br.com.wda.bc_integration.response.BcResponse
 import kotlinx.coroutines.Dispatchers
@@ -36,10 +37,33 @@ class ViewModelCoin(private val repository: CoinRepository) : ViewModel() {
                     _state.postValue(State.Error(it))
                 }
                 .collect {
-                    _state.postValue(State.Sucess(it))
+                    //_state.postValue(State.Sucess(it))
                     Log.e("COIN ", it.toString())
                 }
         }
+    }
+
+    /**/
+    fun getCoinSales(parity: Int,
+                     coinTo: Int,
+                     datePrice: String) {
+     viewModelScope.launch {
+         repository.coinSales(coinTo, parity, datePrice)
+             .flowOn(Dispatchers.Main)
+             .onStart {
+                 _state.postValue(State.Loading)
+             }
+             .catch {
+                 Log.e(TAG, it.toString())
+                 _state.postValue(State.Error(it))
+             }
+             .collect{
+                 _state.postValue(State.SalesSucess(it))
+
+             }
+     }
+
+
     }
 
     /*
@@ -58,8 +82,7 @@ class ViewModelCoin(private val repository: CoinRepository) : ViewModel() {
                     _state.postValue(State.Error(it))
                 }
                 .collect {
-                   // _state.postValue(State.Sucess(it))
-                    Log.e("COIN ", it.toString())
+                    _state.postValue(State.Sucess(it))
                 }
         }
     }
@@ -69,7 +92,8 @@ class ViewModelCoin(private val repository: CoinRepository) : ViewModel() {
         object Loading : State()
         object Saved : State()
 
-        data class Sucess(val bcResponse: BcResponse) : State()
+        data class Sucess(val valorConvertido: String) : State()
+        data class SalesSucess(val cotacao: Cotacao) : State()
         data class Error(val error: Throwable) : State()
     }
 }

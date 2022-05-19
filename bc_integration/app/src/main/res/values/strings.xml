@@ -11,5 +11,15 @@
     <string name="from_converter">Converter de</string>
     <string name="to_converter">Converter Para</string>
     <string name="btn_converter_text">Converter</string>
+    <string name="conversion_from">Para: </string>
+    <string name="conversion_to">Conversão de: </string>
+    <string name="conversion_result">RESULTADO DA CONVERSAO</string>
+    <string name="value_coin_to_converter">Valor a converter:  </string>
+    <string name="conversion_result_from">Resultado da conversão: </string>
+    <string name="date_price">Data cotação utilizada: </string>
+    <string name="taxa">Taxa</string>
+
+
+
 
 </resources>

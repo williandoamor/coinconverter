@@ -14,7 +14,7 @@ import br.com.wda.bc_integration.databinding.ActivitySplashCoinBinding
 
 class SplashActivity: AppCompatActivity() {
 
-    private val SPLASH_SCREEN: Long = 2000
+    private val SPLASH_SCREEN: Long = 3000
     private lateinit var binding: ActivitySplashCoinBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

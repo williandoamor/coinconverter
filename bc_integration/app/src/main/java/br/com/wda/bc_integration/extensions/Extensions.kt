@@ -24,7 +24,7 @@ fun View.hideSoftKeyboard() {
 
 /*Converte o Bigdecimal e retorna no
 formato do idioma que o usuario escolheu*/
-fun BigDecimal.formatCurrencyLocale(locale: Locale = Locale.getDefault()): String {
+fun BigDecimal.formatCurrencyLocale(locale: Locale): String {
     return try {
         NumberFormat.getCurrencyInstance(locale).format(this)
     } catch (exception: Exception) {

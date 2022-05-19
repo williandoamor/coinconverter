@@ -59,7 +59,7 @@ object DataModules {
         factory: GsonConverterFactory
     ): T {
         return Retrofit.Builder()
-            .baseUrl("https://www3.bcb.gov.br/")
+            .baseUrl("https://www3.bcb.gov.br")
             .client(client)
             .addConverterFactory(SimpleXmlConverterFactory.create())
             .build()

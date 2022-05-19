@@ -26,12 +26,21 @@ class CoinRepository(private val service: CoinRemoteService) {
         }
     }
 
+    suspend fun coinSales(coin: Int, parity: Int, datePrice: String) = flow {
+        try {
+            emit(service.coinSales(coin, parity, datePrice))
+        }catch (exception: HttpException){
+            val json = exception.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(json, ErrorResponse::class.java)
+            throw RemoteException(errorResponse.message)
+        }
+    }
+
     suspend fun coinConverter(value: BigDecimal, parity: Int,
                               coinFrom: Int, coinTo: Int,
                               datePrice: String) = flow {
         try {
-            val coinReturn = service.coinConverter(value, parity, coinFrom, coinTo, "2022-03-10")
-            emit(coinReturn)
+            emit(service.coinConverter(value, parity, coinFrom, coinTo, datePrice))
         } catch (e: HttpException) {
             val json = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(json, ErrorResponse::class.java)

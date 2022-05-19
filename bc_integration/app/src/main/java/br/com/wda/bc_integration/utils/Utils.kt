@@ -1,6 +1,7 @@
 package br.com.wda.bc_integration.utils
 
 import android.util.Log
+import org.joda.time.LocalDate
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,13 +21,19 @@ fun getDate(formato: String): String{
     }
 }
 
-/*Returns currency for device locale*/
-fun getCurrencyLocale(): Currency {
+/*Substratc dade*/
+fun getSubstractDate():String {
     return try {
-        val currency = Currency.getInstance(Locale.getDefault())
-        currency
-    }catch (exception: Exception) {
-        Log.e(TAG, "getCurrencyLocale - error capturing current currency locate : ${exception.message.toString()}")
+
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.add(Calendar.DATE, -1)
+
+        val format: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        format.format(calendar.time)
+
+    }catch (exception: Exception){
+        Log.e(TAG, "getSubstractDate - erro ao subtrair data")
         throw exception
     }
+
 }
