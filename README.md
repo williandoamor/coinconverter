@@ -20,3 +20,6 @@ Link para página [Banco Central](https://www.bcb.gov.br/conversao)
 - Ao tentar converter de Dólar para Real o APP não localiza a cotação, para isso é necessário implementar uma busca reversa.
 
 ## Sinta-se a vontade para clonar esse projeto e utilizá-lo como base para seus estudos!
+
+
+![coin-converter](https://user-images.githubusercontent.com/66170796/169300603-2d40f245-a615-4c62-b19c-4abddb37c420.jpeg)
